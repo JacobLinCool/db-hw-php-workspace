@@ -1,0 +1,1 @@
+請使用 devcontainer 打開（VS Code 應該會在右下角提示你）

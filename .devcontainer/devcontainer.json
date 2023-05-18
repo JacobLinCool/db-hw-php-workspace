@@ -1,0 +1,13 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Ubuntu",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {},
+	"onCreateCommand": "sudo apt update && sudo apt install -y apache2 apache2-utils php php-common libapache2-mod-php php-mysql && sudo sed -i 's/^Listen 80$/Listen 8080/' /etc/apache2/ports.conf",
+	"postCreateCommand": "sudo chmod a+x \"$(pwd)/db_final\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)/db_final\" /var/www/html && sudo apache2ctl start",
+	"forwardPorts": [
+		8080
+	]
+}
